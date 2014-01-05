@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+var libphonenumber = require('libphonenumber');
+var readline = require('readline');
+
+var rl = readline.createInterface({
+    input: process.stdin,
+    output: function() {}
+})
+
+rl.on('line', function(line) {
+  libphonenumber.e164(
+    line,
+    'FR',
+    function(error, result) {
+      if (result) {
+        console.log(result);
+      }
+    }
+  )
+})
