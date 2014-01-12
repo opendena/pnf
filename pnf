@@ -1,20 +1,72 @@
 #!/usr/bin/env node
 var libphonenumber = require('libphonenumber');
 var readline = require('readline');
+var numbers = [];
+var options = {
+  format: 'e164',
+  lang: 'FR'
+}
 
-var rl = readline.createInterface({
-    input: process.stdin,
-    output: function() {}
+process.argv.shift()
+process.argv.shift()
+process.argv.forEach(function(arg) {
+  switch(true) {
+    case arg == '-intl':
+    case arg == '--intl':
+    case arg == '-international':
+    case arg == '--international':
+      options.format = 'intl';
+      break;
+    case arg == '-e164':
+    case arg == '--e164':
+      options.format = 'e164';
+      break;
+    case arg.substr(0,6) == '-lang=':
+    case arg.substr(0,7) == '--lang=':
+      options.lang = arg.split('=')[1];
+      break;
+    default:
+      numbers.push(arg);
+      break;
+  }
 })
 
-rl.on('line', function(line) {
-  libphonenumber.e164(
-    line,
-    'FR',
-    function(error, result) {
-      if (result) {
-        console.log(result);
+if (numbers.length === 0) {
+  var rl = readline.createInterface({
+      input: process.stdin,
+      output: function() {}
+  })
+
+  rl.on('line', function(line) {
+    libphonenumber[options.format](
+      line,
+      options.lang,
+      function(error, result) {
+        if (result) {
+          console.log(result);
+        }
       }
-    }
-  )
-})
+    )
+  })
+
+  rl.on('end', function() {
+    process.exit(0);
+  });
+} else {
+  numbers.forEach(function(number) {
+    libphonenumber[options.format](
+      number,
+      options.lang,
+      function(error, result) {
+        if (error) {
+          console.error(error);
+        }
+        if (result) {
+          console.log(result);
+        }
+      }
+    );
+  })
+}
+
+
