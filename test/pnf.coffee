@@ -3,6 +3,20 @@ exec = require('child_process').exec
 os = require 'os'
 describe "Formats phone number", () ->
 
+  describe "Error from stdin", () ->
+    it "Should return an error for 33", (done) ->
+      exec "echo 33 | ./pnf", (error, stdout, stderr) ->
+        assert.equal stderr, "33 is not a valid number#{os.EOL}"
+        assert.equal stdout, ""
+        done()
+
+  describe "Error from args", () ->
+    it "Should return an error for 33", (done) ->
+      exec "./pnf 33", (error, stdout, stderr) ->
+        assert.equal stderr, "33 is not a valid number#{os.EOL}"
+        assert.equal stdout, ""
+        done()
+
   describe "Default (e164) from stdin", () ->
     it "Should return +33364515012", (done) ->
       exec "echo 33364515012 | ./pnf", (error, stdout, stderr) ->
@@ -70,3 +84,4 @@ describe "Formats phone number", () ->
         assert.equal stderr, ""
         assert.equal stdout, "+33 3 64 51 50 12#{os.EOL}"
         done()
+

@@ -1,10 +1,29 @@
 #!/usr/bin/env node
+"use strict";
 var libphonenumber = require('libphonenumber');
 var readline = require('readline');
+var pnf = {};
 var numbers = [];
-var options = {
+
+pnf.options = {
   format: 'e164',
   lang: 'FR'
+}
+pnf.format = function(number) {
+  libphonenumber[this.options.format](
+    number,
+    this.options.lang,
+    function(error, result) {
+      if (error) {
+        console.error(
+          number + " is not a valid number"
+        );
+      }
+      if (result) {
+        console.log(result);
+      }
+    }
+  )
 }
 
 process.argv.shift()
@@ -15,15 +34,15 @@ process.argv.forEach(function(arg) {
     case arg == '--intl':
     case arg == '-international':
     case arg == '--international':
-      options.format = 'intl';
+      pnf.options.format = 'intl';
       break;
     case arg == '-e164':
     case arg == '--e164':
-      options.format = 'e164';
+      pnf.options.format = 'e164';
       break;
     case arg.substr(0,6) == '-lang=':
     case arg.substr(0,7) == '--lang=':
-      options.lang = arg.split('=')[1];
+      pnf.options.lang = arg.split('=')[1];
       break;
     default:
       numbers.push(arg);
@@ -33,20 +52,12 @@ process.argv.forEach(function(arg) {
 
 if (numbers.length === 0) {
   var rl = readline.createInterface({
-      input: process.stdin,
-      output: function() {}
-  })
+    input: process.stdin,
+    output: function() {}
+  });
 
   rl.on('line', function(line) {
-    libphonenumber[options.format](
-      line,
-      options.lang,
-      function(error, result) {
-        if (result) {
-          console.log(result);
-        }
-      }
-    )
+    pnf.format(line)
   })
 
   rl.on('end', function() {
@@ -54,19 +65,6 @@ if (numbers.length === 0) {
   });
 } else {
   numbers.forEach(function(number) {
-    libphonenumber[options.format](
-      number,
-      options.lang,
-      function(error, result) {
-        if (error) {
-          console.error(error);
-        }
-        if (result) {
-          console.log(result);
-        }
-      }
-    );
+    pnf.format(number)
   })
 }
-
-
