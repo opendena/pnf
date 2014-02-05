@@ -2,6 +2,26 @@ assert = require 'assert'
 exec = require('child_process').exec
 os = require 'os'
 describe "Formats phone number", () ->
+  describe "Display the help", () ->
+    it "Should diplay help text", (done) ->
+      exec "./pnf --help", (error, stdout, stderr) ->
+        assert.equal stderr, ""
+        assert.equal stdout, [
+          'Usage: pnf [options] [numbers...]'
+          '   or: [numbers...] | pnf [options]'
+          ''
+          'Description:'
+          ''
+          'Phone number format'
+          ''
+          'Options'
+          ''
+          '  -intl, --intl            Internationnal format'
+          '  -e164, --e164            e164 format'
+          '  -lang, --lang            Language (ISO 639-1)'
+          ''
+        ].join os.EOL
+        done()
 
   describe "Error from stdin", () ->
     it "Should return an error for 33", (done) ->

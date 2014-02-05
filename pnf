@@ -2,6 +2,7 @@
 "use strict";
 var libphonenumber = require('libphonenumber');
 var readline = require('readline');
+var os = require('os');
 var pnf = {};
 var numbers = [];
 
@@ -30,6 +31,26 @@ process.argv.shift()
 process.argv.shift()
 process.argv.forEach(function(arg) {
   switch(true) {
+    case arg == '-help':
+    case arg == '--help':
+      console.log(
+        [
+          'Usage: pnf [options] [numbers...]',
+          '   or: [numbers...] | pnf [options]',
+          '',
+          'Description:',
+          '',
+          'Phone number format',
+          '',
+          'Options',
+          '',
+          '  -intl, --intl            Internationnal format',
+          '  -e164, --e164            e164 format',
+          '  -lang, --lang            Language (ISO 639-1)'
+        ].join(os.EOL)
+      );
+      process.exit(0);
+      break;
     case arg == '-intl':
     case arg == '--intl':
     case arg == '-international':
