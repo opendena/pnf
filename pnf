@@ -78,7 +78,7 @@ if (numbers.length === 0) {
   });
 
   rl.on('line', function(line) {
-    line.replace(/[\n\r]/g, ''); // Nodejs 0.8 issue
+    line.replace(/\r?\n|\r/g, ''); // Nodejs 0.8 issue
     pnf.format(line)
   })
 
