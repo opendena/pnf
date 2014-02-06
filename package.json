@@ -1,6 +1,6 @@
 {
   "name": "pnf",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Phone Number Format",
   "keywords": "phone number e164 libphonenumber",
   "repository": "https://github.com/opendena/pnf",
