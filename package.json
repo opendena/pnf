@@ -1,10 +1,13 @@
 {
   "name": "pnf",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Phone Number Format",
   "keywords": "phone number e164 libphonenumber",
   "repository": "https://github.com/opendena/pnf",
-  "main": "pnf",
+  "main": "bin/pnf",
+  "bin": {
+    "pnf": "bin/pnf"
+  },
   "scripts": {
     "test": "NODE_ENV=test ./node_modules/.bin/mocha --compilers coffee:coffee-script --require coffee-script --colors"
   },
