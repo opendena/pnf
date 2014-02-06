@@ -19,8 +19,8 @@ describe "Formats phone number", () ->
           'Options'
           ''
           '  -intl, --intl            Internationnal format'
-          '  -e164, --e164            e164 format'
-          '  -lang, --lang            Language (ISO 639-1)'
+          '  -e164, --e164            e164 format (default)'
+          '  -lang, --lang            Language (ISO 639-1, default is FR)'
           ''
         ].join os.EOL
         done()
