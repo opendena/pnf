@@ -9,7 +9,7 @@
     "pnf": "bin/pnf"
   },
   "scripts": {
-    "test": "NODE_ENV=test ./node_modules/.bin/mocha --compilers coffee:coffee-script --require coffee-script --colors"
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha --colors"
   },
   "author": "Sébastien ELET <sebastien@elet.fr>",
   "license": "BSD-2-Clause",
