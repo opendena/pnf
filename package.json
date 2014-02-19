@@ -1,6 +1,6 @@
 {
   "name": "pnf",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Phone Number Format",
   "keywords": "phone number e164 libphonenumber",
   "repository": "https://github.com/opendena/pnf",
@@ -14,8 +14,7 @@
   "author": "Sébastien ELET <sebastien@elet.fr>",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "libphonenumber": "0.0.5",
-    "coffee-script": "~1.6.3"
+    "libphonenumber": "0.0.5"
   },
   "devDependencies": {
     "mocha": "*"
