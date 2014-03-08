@@ -3,7 +3,7 @@
   var assert = require('assert')
     , exec = require('child_process').exec
     , os = require('os')
-    , pnf = './bin/pnf';
+    , pnf = './bin/pnf.js';
 
   describe("Formats phone number", function() {
     describe("Display the help", function() {
