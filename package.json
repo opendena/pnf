@@ -21,6 +21,7 @@
   "devDependencies": {
     "mocha": "*",
     "istanbul": "~0.2.4",
-    "coveralls": "~2.8.0"
+    "coveralls": "~2.8.0",
+    "mock-utf8-stream": "^0.1.1"
   }
 }
