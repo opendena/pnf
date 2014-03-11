@@ -15,7 +15,7 @@ pnf
 npm install -g pnf
 ```
 
-### Examples 
+## Examples 
 
 ```bash
 echo 364515012 | pnf
