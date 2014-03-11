@@ -6,7 +6,7 @@ env:
   global:
     - secure: "jaweNpVCOu9QXxGMkfdDaALvop+RT7TB4um6SwHcRIRlu6ONWWwXwURMwrMWb0d/NaBaM4pNFIwG10WIhhsqjGeYLxHPCiKCMzPh+4fR7ykBzd1Z1ddFj2HxtWFHikex6YSCFv4aDyLxurtnhq7igjOuultsDWZZ8QKJ4q20l7g="
 before_script:
-  - "echo repo_token=\"$COVERALLS_REPO_TOKEN > .coveralls.yml"
+  - "echo \"repo_token=\"$COVERALLS_REPO_TOKEN > .coveralls.yml"
 script:
   - npm test
   - npm run coveralls
