@@ -103,23 +103,6 @@
           done();
         });
       });
-      it("Should return +33364515012", function(done) {
-        var stdout = new stream.MockWritableStream(),
-          stderr = new stream.MockWritableStream(),
-          stdin = new stream.MockReadableStream()
-        stdout.startCapture()
-        stderr.startCapture()
-        pnf.config({
-          stdin: stdin,
-          stdout: stdout,
-          stderr: stderr,
-          argv: [
-            'node',
-            'pnf.js'
-          ]
-        })
-        done()
-      });
 
       it("Should return +33364515012", function(done) {
         exec("echo 0364515012 | " + bin + " ", function(error, stdout, stderr) {
