@@ -78,6 +78,26 @@ describe('Use mocks/stubs', function() {
     });
   });
 
+  it("Should diplay help text", function(done) {
+    pnf.config({
+      stdin: stdin,
+      stdout: stdout,
+      stderr: stderr,
+      argv: [
+        'node',
+        'pnf.js',
+        '-help'
+      ]
+    })
+    pnf.run(function(){
+      assert.equal(stderr.capturedData, "");
+      assert.equal(
+        stdout.capturedData,
+        help
+      );
+      done();
+    });
+  });
 
   it("Should return +33364515012", function(done) {
     pnf.config({
