@@ -8,47 +8,6 @@
     , bin = './bin/pnf.js'
     , pnf = require('../lib/pnf.js');
 
-  describe('User mocks/stubs', function() {
-    it("Should diplay help text", function(done) {
-      var stdout = new stream.MockWritableStream(),
-        stderr = new stream.MockWritableStream(),
-        stdin = new stream.MockReadableStream()
-      stdout.startCapture()
-      stderr.startCapture()
-      pnf.config({
-        stdin: stdin,
-        stdout: stdout,
-        stderr: stderr,
-        argv: [
-          'node',
-          'pnf.js',
-          '--help'
-        ]
-      })
-      pnf.run(function(){
-        assert.equal(stderr.capturedData, "");
-        assert.equal(
-          stdout.capturedData,
-          [
-            'Usage: pnf [options] [numbers...]'
-            , '   or: [numbers...] | pnf [options]'
-            , ''
-            , 'Description:'
-            , ''
-            , 'Phone number format'
-            , ''
-            , 'Options'
-            , ''
-            , '  -intl, --intl            Internationnal format'
-            , '  -e164, --e164            e164 format (default)'
-            , '  -lang, --lang            Language (ISO 639-1, default is FR)'
-            , ''
-          ].join(os.EOL)
-        );
-        done();
-      });
-    });
-  })
 
   describe("Formats phone number", function() {
     describe("Display the help", function() {
@@ -127,6 +86,7 @@
           done();
         });
       });
+      /*
       it("Should return +33364515012", function(done) {
         var stdout = new stream.MockWritableStream(),
           stderr = new stream.MockWritableStream(),
@@ -149,6 +109,7 @@
           done()
         })
       });
+      */
 
       it("Should return +33364515012", function(done) {
         exec("" + bin + " 0364515012", function(error, stdout, stderr) {

@@ -1,3 +1,4 @@
+/* global: it, describe, beforeEach */
 "use strict";
 var assert = require('assert')
   , exec = require('child_process').exec
@@ -9,12 +10,35 @@ var assert = require('assert')
 
 
 describe('Use mocks/stubs', function() {
-  it("Should return +33364515012", function(done) {
-    var stdout = new stream.MockWritableStream()
-      , stderr = new stream.MockWritableStream()
-      , stdin = new nodeStream.PassThrough()
+  var stdout = new stream.MockWritableStream()
+    , stderr = new stream.MockWritableStream()
+    , stdin = new nodeStream.PassThrough()
+    , help = [
+      'Usage: pnf [options] [numbers...]'
+      , '   or: [numbers...] | pnf [options]'
+      , ''
+      , 'Description:'
+      , ''
+      , 'Phone number format'
+      , ''
+      , 'Options'
+      , ''
+      , '  -intl, --intl            Internationnal format'
+      , '  -e164, --e164            e164 format (default)'
+      , '  -lang, --lang            Language (ISO 639-1, default is FR)'
+      , ''
+    ].join(os.EOL)
+
+
+  beforeEach(function(done) {
+    stderr.clearCapturedData()
+    stdout.clearCapturedData()
     stdout.startCapture()
     stderr.startCapture()
+    done()
+  })
+
+  it("Should return +33364515012", function(done) {
     pnf.config({
       stdin: stdin,
       stdout: stdout,
@@ -32,5 +56,47 @@ describe('Use mocks/stubs', function() {
     stdin.write('364515012' + "\n")
     stdin.end()
   })
+
+  it("Should diplay help text", function(done) {
+    pnf.config({
+      stdin: stdin,
+      stdout: stdout,
+      stderr: stderr,
+      argv: [
+        'node',
+        'pnf.js',
+        '--help'
+      ]
+    })
+    pnf.run(function(){
+      assert.equal(stderr.capturedData, "");
+      assert.equal(
+        stdout.capturedData,
+        help
+      );
+      done();
+    });
+  });
+
+
+  it("Should return +33364515012", function(done) {
+    pnf.config({
+      stdin: stdin,
+      stdout: stdout,
+      stderr: stderr,
+      argv: [
+        'node',
+        'pnf.js',
+        '33364515012'
+      ]
+    })
+    pnf.run(function() {
+      // console.log(stdout)
+      assert.equal(stderr.capturedData, '')
+      assert.equal(stdout.capturedData, '+33364515012' + os.EOL)
+      done()
+    })
+  })
+
 })
 
