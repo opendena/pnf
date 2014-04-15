@@ -35,6 +35,8 @@ describe('Use mocks/stubs', function() {
     stdout.clearCapturedData()
     stdout.startCapture()
     stderr.startCapture()
+    stdin = new nodeStream.PassThrough()
+    pnf = require('../lib/pnf.js')
     done()
   })
 
@@ -80,7 +82,8 @@ describe('Use mocks/stubs', function() {
 
   it("Should diplay help text", function(done) {
     pnf.config({
-      stdin: stdin,
+      stdin: new nodeStream.PassThrough(),
+      // stdin: stdin,
       stdout: stdout,
       stderr: stderr,
       argv: [
@@ -111,12 +114,28 @@ describe('Use mocks/stubs', function() {
       ]
     })
     pnf.run(function() {
-      // console.log(stdout)
       assert.equal(stderr.capturedData, '')
       assert.equal(stdout.capturedData, '+33364515012' + os.EOL)
       done()
     })
-  })
+  });
 
+  it("Should return an error", function(done) {
+    pnf.config({
+      stdin: stdin,
+      stdout: stdout,
+      stderr: stderr,
+      argv: [
+        'node',
+        'pnf.js',
+        '5013'
+      ]
+    })
+    pnf.run(function() {
+      assert.equal(stderr.capturedData, '5013 is not a valid number' + os.EOL)
+      assert.equal(stdout.capturedData, '')
+      done()
+    })
+  });
 })
 
