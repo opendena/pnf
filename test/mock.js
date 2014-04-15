@@ -120,6 +120,64 @@ describe('Use mocks/stubs', function() {
     })
   });
 
+  it("Should return +33364515012", function(done) {
+    pnf.config({
+      stdin: stdin,
+      stdout: stdout,
+      stderr: stderr,
+      argv: [
+        'node',
+        'pnf.js',
+        '-e164',
+        '33364515012'
+      ]
+    })
+    pnf.run(function() {
+      assert.equal(stderr.capturedData, '')
+      assert.equal(stdout.capturedData, '+33364515012' + os.EOL)
+      done()
+    })
+  });
+
+  it("Should return +33364515012", function(done) {
+    pnf.config({
+      stdin: stdin,
+      stdout: stdout,
+      stderr: stderr,
+      argv: [
+        'node',
+        'pnf.js',
+        '-e164',
+        '-lang=FR',
+        '33364515012'
+      ]
+    })
+    pnf.run(function() {
+      assert.equal(stderr.capturedData, '')
+      assert.equal(stdout.capturedData, '+33364515012' + os.EOL)
+      done()
+    })
+  });
+
+  it("Should return 33364515012", function(done) {
+    pnf.config({
+      stdin: stdin,
+      stdout: stdout,
+      stderr: stderr,
+      argv: [
+        'node',
+        'pnf.js',
+        '-intl',
+        '0364515012'
+      ]
+    })
+    pnf.run(function() {
+      assert.equal(stderr.capturedData, '')
+      assert.equal(stdout.capturedData, '+33 3 64 51 50 12' + os.EOL)
+      done()
+    })
+  });
+
   it("Should return an error", function(done) {
     pnf.config({
       stdin: stdin,
