@@ -1,6 +1,6 @@
 {
   "name": "pnf",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Phone Number Format",
   "keywords": "phone number e164 libphonenumber",
   "repository": "https://github.com/opendena/pnf",
@@ -20,8 +20,8 @@
   },
   "devDependencies": {
     "mocha": "*",
-    "istanbul": "~0.2.4",
-    "coveralls": "~2.8.0",
+    "istanbul": "^0.3.0",
+    "coveralls": "^2.11.1",
     "mock-utf8-stream": "^0.1.1"
   }
 }
