@@ -1,11 +1,9 @@
 'use strict';
 /* global describe, it, beforeEach */
 var assert = require('assert')
-  , exec = require('child_process').exec
   , os = require('os')
   , stream = require('mock-utf8-stream')
   , nodeStream = require('stream')
-  , readline = require('readline')
   , pnf
 
 
