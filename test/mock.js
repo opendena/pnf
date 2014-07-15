@@ -40,7 +40,7 @@ describe('Use mocks/stubs', function() {
     done()
   })
 
-  it("Should return +33364515012", function(done) {
+  it('Should return +33364515012', function(done) {
     pnf.config({
       stdin: stdin,
       stdout: stdout,
@@ -51,15 +51,15 @@ describe('Use mocks/stubs', function() {
       ]
     })
     pnf.run(function() {
-      assert.equal(stderr.capturedData, "")
+      assert.equal(stderr.capturedData, '')
       assert.equal(stdout.capturedData, '+33364515012' + os.EOL)
       done()
     })
-    stdin.write('364515012' + "\n")
+    stdin.write('364515012' + os.EOL)
     stdin.end()
   })
 
-  it("Should diplay help text", function(done) {
+  it('Should diplay help text', function(done) {
     pnf.config({
       stdin: stdin,
       stdout: stdout,
@@ -71,7 +71,7 @@ describe('Use mocks/stubs', function() {
       ]
     })
     pnf.run(function(){
-      assert.equal(stderr.capturedData, "");
+      assert.equal(stderr.capturedData, '');
       assert.equal(
         stdout.capturedData,
         help
@@ -80,7 +80,7 @@ describe('Use mocks/stubs', function() {
     });
   });
 
-  it("Should diplay help text", function(done) {
+  it('Should diplay help text', function(done) {
     pnf.config({
       stdin: new nodeStream.PassThrough(),
       // stdin: stdin,
@@ -93,7 +93,7 @@ describe('Use mocks/stubs', function() {
       ]
     })
     pnf.run(function(){
-      assert.equal(stderr.capturedData, "");
+      assert.equal(stderr.capturedData, '');
       assert.equal(
         stdout.capturedData,
         help
@@ -102,7 +102,7 @@ describe('Use mocks/stubs', function() {
     });
   });
 
-  it("Should return +33364515012", function(done) {
+  it('Should return +33364515012', function(done) {
     pnf.config({
       stdin: stdin,
       stdout: stdout,
@@ -120,7 +120,7 @@ describe('Use mocks/stubs', function() {
     })
   });
 
-  it("Should return +33364515012", function(done) {
+  it('Should return +33364515012', function(done) {
     pnf.config({
       stdin: stdin,
       stdout: stdout,
@@ -139,7 +139,7 @@ describe('Use mocks/stubs', function() {
     })
   });
 
-  it("Should return +33364515012", function(done) {
+  it('Should return +33364515012', function(done) {
     pnf.config({
       stdin: stdin,
       stdout: stdout,
@@ -159,7 +159,7 @@ describe('Use mocks/stubs', function() {
     })
   });
 
-  it("Should return 33364515012", function(done) {
+  it('Should return 33364515012', function(done) {
     pnf.config({
       stdin: stdin,
       stdout: stdout,
@@ -178,7 +178,7 @@ describe('Use mocks/stubs', function() {
     })
   });
 
-  it("Should return an error", function(done) {
+  it('Should return an error', function(done) {
     pnf.config({
       stdin: stdin,
       stdout: stdout,
