@@ -4,10 +4,7 @@
   var assert = require('assert')
     , exec = require('child_process').exec
     , os = require('os')
-    , stream = require('mock-utf8-stream')
     , bin = './bin/pnf.js'
-    , pnf = require('../lib/pnf.js');
-
 
   describe('Formats phone number', function() {
     describe('Display the help', function() {
@@ -86,30 +83,6 @@
           done();
         });
       });
-      /*
-      it('Should return +33364515012', function(done) {
-        var stdout = new stream.MockWritableStream(),
-          stderr = new stream.MockWritableStream(),
-          stdin = new stream.MockReadableStream()
-        stdout.startCapture()
-        stderr.startCapture()
-        pnf.config({
-          stdin: stdin,
-          stdout: stdout,
-          stderr: stderr,
-          argv: [
-            'node',
-            'pnf.js',
-            '33364515012'
-          ]
-        })
-        pnf.run(function() {
-          assert.equal(stderr.capturedData, '')
-          assert.equal(stdout.capturedData, '+33364515012' + os.EOL)
-          done()
-        })
-      });
-      */
 
       it('Should return +33364515012', function(done) {
         exec('' + bin + ' 0364515012', function(error, stdout, stderr) {
