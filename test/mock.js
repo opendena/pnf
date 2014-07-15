@@ -6,7 +6,7 @@ var assert = require('assert')
   , stream = require('mock-utf8-stream')
   , nodeStream = require('stream')
   , readline = require('readline')
-  , pnf = require('../lib/pnf.js')
+  , pnf
 
 
 describe('Use mocks/stubs', function() {
