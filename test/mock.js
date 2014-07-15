@@ -1,5 +1,5 @@
 /* global: it, describe, beforeEach */
-"use strict";
+'use strict';
 var assert = require('assert')
   , exec = require('child_process').exec
   , os = require('os')
