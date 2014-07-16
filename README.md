@@ -5,6 +5,7 @@ pnf
 [![Build Status](https://travis-ci.org/opendena/pnf.png?branch=master)](https://travis-ci.org/opendena/pnf)
 [![Coverage Status](https://coveralls.io/repos/opendena/pnf/badge.png?branch=master)](https://coveralls.io/r/opendena/pnf?branch=master)
 [![Codacy Badge](https://www.codacy.com/project/badge/5531e65615c04f00a3698fafb4cb2bc7)](https://www.codacy.com/public/opendena/pnf.git)
+[![Code Climate](https://codeclimate.com/github/opendena/pnf.png)](https://codeclimate.com/github/opendena/pnf)
 [![Dependency Status](https://david-dm.org/opendena/pnf.png)](https://david-dm.org/opendena/pnf) 
 [![devDependency Status](https://david-dm.org/opendena/pnf/dev-status.png)](https://david-dm.org/opendena/pnf#info=devDependencies)
 
