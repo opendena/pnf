@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 'use strict';
 
 var pnf = require('../lib/pnf.js')
