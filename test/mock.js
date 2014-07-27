@@ -5,6 +5,7 @@ var assert = require('assert')
   , stream = require('mock-utf8-stream')
   , nodeStream = require('stream')
   , pnf
+;
 
 
 describe('Use mocks/stubs', function() {
@@ -25,18 +26,18 @@ describe('Use mocks/stubs', function() {
       , '  -e164, --e164            e164 format (default)'
       , '  -lang, --lang            Language (ISO 639-1, default is FR)'
       , ''
-    ].join(os.EOL)
+    ].join(os.EOL);
 
 
   beforeEach(function(done) {
-    stderr.clearCapturedData()
-    stdout.clearCapturedData()
-    stdout.startCapture()
-    stderr.startCapture()
-    stdin = new nodeStream.PassThrough()
-    pnf = require('../lib/pnf.js')
-    done()
-  })
+    stderr.clearCapturedData();
+    stdout.clearCapturedData();
+    stdout.startCapture();
+    stderr.startCapture();
+    stdin = new nodeStream.PassThrough();
+    pnf = require('../lib/pnf.js');
+    done();
+  });
 
   it('Should return +33364515012', function(done) {
     pnf.config({
@@ -47,15 +48,15 @@ describe('Use mocks/stubs', function() {
         'node',
         'pnf.js'
       ]
-    })
+    });
     pnf.run(function() {
-      assert.equal(stderr.capturedData, '')
-      assert.equal(stdout.capturedData, '+33364515012' + os.EOL)
-      done()
-    })
-    stdin.write('364515012' + os.EOL)
-    stdin.end()
-  })
+      assert.equal(stderr.capturedData, '');
+      assert.equal(stdout.capturedData, '+33364515012' + os.EOL);
+      done();
+    });
+    stdin.write('364515012' + os.EOL);
+    stdin.end();
+  });
 
   it('Should diplay help text', function(done) {
     pnf.config({
@@ -67,7 +68,7 @@ describe('Use mocks/stubs', function() {
         'pnf.js',
         '--help'
       ]
-    })
+    });
     pnf.run(function(){
       assert.equal(stderr.capturedData, '');
       assert.equal(
@@ -89,7 +90,7 @@ describe('Use mocks/stubs', function() {
         'pnf.js',
         '-help'
       ]
-    })
+    });
     pnf.run(function(){
       assert.equal(stderr.capturedData, '');
       assert.equal(
@@ -110,12 +111,12 @@ describe('Use mocks/stubs', function() {
         'pnf.js',
         '33364515012'
       ]
-    })
+    });
     pnf.run(function() {
-      assert.equal(stderr.capturedData, '')
-      assert.equal(stdout.capturedData, '+33364515012' + os.EOL)
-      done()
-    })
+      assert.equal(stderr.capturedData, '');
+      assert.equal(stdout.capturedData, '+33364515012' + os.EOL);
+      done();
+    });
   });
 
   it('Should return +33364515012', function(done) {
@@ -129,12 +130,12 @@ describe('Use mocks/stubs', function() {
         '-e164',
         '33364515012'
       ]
-    })
+    });
     pnf.run(function() {
-      assert.equal(stderr.capturedData, '')
-      assert.equal(stdout.capturedData, '+33364515012' + os.EOL)
-      done()
-    })
+      assert.equal(stderr.capturedData, '');
+      assert.equal(stdout.capturedData, '+33364515012' + os.EOL);
+      done();
+    });
   });
 
   it('Should return +33364515012', function(done) {
@@ -149,12 +150,12 @@ describe('Use mocks/stubs', function() {
         '-lang=FR',
         '33364515012'
       ]
-    })
+    });
     pnf.run(function() {
-      assert.equal(stderr.capturedData, '')
-      assert.equal(stdout.capturedData, '+33364515012' + os.EOL)
-      done()
-    })
+      assert.equal(stderr.capturedData, '');
+      assert.equal(stdout.capturedData, '+33364515012' + os.EOL);
+      done();
+    });
   });
 
   it('Should return 33364515012', function(done) {
@@ -168,12 +169,12 @@ describe('Use mocks/stubs', function() {
         '-intl',
         '0364515012'
       ]
-    })
+    });
     pnf.run(function() {
-      assert.equal(stderr.capturedData, '')
-      assert.equal(stdout.capturedData, '+33 3 64 51 50 12' + os.EOL)
-      done()
-    })
+      assert.equal(stderr.capturedData, '');
+      assert.equal(stdout.capturedData, '+33 3 64 51 50 12' + os.EOL);
+      done();
+    });
   });
 
   it('Should return an error', function(done) {
@@ -186,12 +187,11 @@ describe('Use mocks/stubs', function() {
         'pnf.js',
         '5013'
       ]
-    })
+    });
     pnf.run(function() {
-      assert.equal(stderr.capturedData, '5013 is not a valid number' + os.EOL)
-      assert.equal(stdout.capturedData, '')
-      done()
-    })
+      assert.equal(stderr.capturedData, '5013 is not a valid number' + os.EOL);
+      assert.equal(stdout.capturedData, '');
+      done();
+    });
   });
-})
-
+});

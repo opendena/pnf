@@ -5,6 +5,7 @@
     , exec = require('child_process').exec
     , os = require('os')
     , bin = './bin/pnf.js'
+  ;
 
   describe('Formats phone number', function() {
     describe('Display the help', function() {
