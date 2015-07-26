@@ -1,5 +1,4 @@
 'use strict';
-/* global describe, it, beforeEach */
 var assert = require('assert')
   , os = require('os')
   , stream = require('mock-utf8-stream')
@@ -41,12 +40,12 @@ describe('Use mocks/stubs', function() {
 
   it('Should return +33364515012', function(done) {
     pnf.config({
-      stdin: stdin,
-      stdout: stdout,
-      stderr: stderr,
-      argv: [
-        'node',
-        'pnf.js'
+      stdin: stdin
+      , stdout: stdout
+      , stderr: stderr
+      , argv: [
+        'node'
+        , 'pnf.js'
       ]
     });
     pnf.run(function() {
@@ -60,20 +59,20 @@ describe('Use mocks/stubs', function() {
 
   it('Should diplay help text', function(done) {
     pnf.config({
-      stdin: stdin,
-      stdout: stdout,
-      stderr: stderr,
-      argv: [
-        'node',
-        'pnf.js',
-        '--help'
+      stdin: stdin
+      , stdout: stdout
+      , stderr: stderr
+      , argv: [
+        'node'
+        , 'pnf.js'
+        , '--help'
       ]
     });
-    pnf.run(function(){
+    pnf.run(function() {
       assert.equal(stderr.capturedData, '');
       assert.equal(
-        stdout.capturedData,
-        help
+        stdout.capturedData
+        , help
       );
       done();
     });
@@ -81,21 +80,20 @@ describe('Use mocks/stubs', function() {
 
   it('Should diplay help text', function(done) {
     pnf.config({
-      stdin: new nodeStream.PassThrough(),
-      // stdin: stdin,
-      stdout: stdout,
-      stderr: stderr,
-      argv: [
-        'node',
-        'pnf.js',
-        '-help'
+      stdin: new nodeStream.PassThrough()
+      , stdout: stdout
+      , stderr: stderr
+      , argv: [
+        'node'
+        , 'pnf.js'
+        , '-help'
       ]
     });
-    pnf.run(function(){
+    pnf.run(function() {
       assert.equal(stderr.capturedData, '');
       assert.equal(
-        stdout.capturedData,
-        help
+        stdout.capturedData
+        , help
       );
       done();
     });
@@ -103,13 +101,13 @@ describe('Use mocks/stubs', function() {
 
   it('Should return +33364515012', function(done) {
     pnf.config({
-      stdin: stdin,
-      stdout: stdout,
-      stderr: stderr,
-      argv: [
-        'node',
-        'pnf.js',
-        '33364515012'
+      stdin: stdin
+      , stdout: stdout
+      , stderr: stderr
+      , argv: [
+        'node'
+        , 'pnf.js'
+        , '33364515012'
       ]
     });
     pnf.run(function() {
@@ -121,14 +119,14 @@ describe('Use mocks/stubs', function() {
 
   it('Should return +33364515012', function(done) {
     pnf.config({
-      stdin: stdin,
-      stdout: stdout,
-      stderr: stderr,
-      argv: [
-        'node',
-        'pnf.js',
-        '-e164',
-        '33364515012'
+      stdin: stdin
+      , stdout: stdout
+      , stderr: stderr
+      , argv: [
+        'node'
+        , 'pnf.js'
+        , '-e164'
+        , '33364515012'
       ]
     });
     pnf.run(function() {
@@ -140,15 +138,15 @@ describe('Use mocks/stubs', function() {
 
   it('Should return +33364515012', function(done) {
     pnf.config({
-      stdin: stdin,
-      stdout: stdout,
-      stderr: stderr,
-      argv: [
-        'node',
-        'pnf.js',
-        '-e164',
-        '-lang=FR',
-        '33364515012'
+      stdin: stdin
+      , stdout: stdout
+      , stderr: stderr
+      , argv: [
+        'node'
+        , 'pnf.js'
+        , '-e164'
+        , '-lang=FR'
+        , '33364515012'
       ]
     });
     pnf.run(function() {
@@ -160,14 +158,14 @@ describe('Use mocks/stubs', function() {
 
   it('Should return 33364515012', function(done) {
     pnf.config({
-      stdin: stdin,
-      stdout: stdout,
-      stderr: stderr,
-      argv: [
-        'node',
-        'pnf.js',
-        '-intl',
-        '0364515012'
+      stdin: stdin
+      , stdout: stdout
+      , stderr: stderr
+      , argv: [
+        'node'
+        , 'pnf.js'
+        , '-intl'
+        , '0364515012'
       ]
     });
     pnf.run(function() {
@@ -179,13 +177,13 @@ describe('Use mocks/stubs', function() {
 
   it('Should return an error', function(done) {
     pnf.config({
-      stdin: stdin,
-      stdout: stdout,
-      stderr: stderr,
-      argv: [
-        'node',
-        'pnf.js',
-        '5013'
+      stdin: stdin
+      , stdout: stdout
+      , stderr: stderr
+      , argv: [
+        'node'
+        , 'pnf.js'
+        , '5013'
       ]
     });
     pnf.run(function() {
