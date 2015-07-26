@@ -4,6 +4,7 @@ node_js:
   - 0.11
   - 0.12
   - iojs
+sudo: false
 env:
   global:
     - secure: "jaweNpVCOu9QXxGMkfdDaALvop+RT7TB4um6SwHcRIRlu6ONWWwXwURMwrMWb0d/NaBaM4pNFIwG10WIhhsqjGeYLxHPCiKCMzPh+4fR7ykBzd1Z1ddFj2HxtWFHikex6YSCFv4aDyLxurtnhq7igjOuultsDWZZ8QKJ4q20l7g="
