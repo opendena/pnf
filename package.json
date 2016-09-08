@@ -16,11 +16,11 @@
   "author": "Sébastien ELET <sebastien@elet.fr>",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "google-libphonenumber": "~1.0"
+    "google-libphonenumber": "~1.1.0"
   },
   "devDependencies": {
     "mocha": "*",
-    "istanbul": "^0.3.0",
+    "istanbul": "^0.4.5",
     "coveralls": "^2.11.1",
     "mock-utf8-stream": "^0.1.1"
   }
