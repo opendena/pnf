@@ -16,7 +16,7 @@
   "author": "Sébastien ELET <sebastien@elet.fr>",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "google-libphonenumber": "~1.1.0"
+    "google-libphonenumber": "~2.0.1"
   },
   "devDependencies": {
     "mocha": "*",
