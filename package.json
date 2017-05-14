@@ -19,7 +19,7 @@
     "google-libphonenumber": "~2.0.1"
   },
   "devDependencies": {
-    "mocha": "*",
+    "mocha": "3.4.0",
     "istanbul": "^0.4.5",
     "coveralls": "^2.11.1",
     "mock-utf8-stream": "^0.1.1"
